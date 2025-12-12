@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday Anime Edition</title>
+<style>
+    body {
+        margin: 0;
+        font-family: Poppins, sans-serif;
+        background: linear-gradient(135deg, #ff77aa, #7755ff);
+        color: white;
+        text-align: center;
+    }
+    h1 {
+        margin-top: 20px;
+        text-shadow: 0 0 10px #fff;
+    }
+    .card {
+        margin: 30px auto;
+        width: 330px;
+        padding: 20px;
+        background: rgba(255,255,255,0.15);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        box-shadow: 0 0 20px rgba(255,255,255,0.3);
+    }
+    img {
+        width: 100%;
+        border-radius: 15px;
+        margin-bottom: 15px;
+        box-shadow: 0 0 15px rgba(0,0,0,0.4);
+    }
+    button {
+        width: 90%;
+        padding: 12px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 10px;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+    .voice { background: #ff5599; }
+    .voice:hover { background: #ff77bb; }
+    .music { background: #6655ff; }
+    .music:hover { background: #8877ff; }
+
+    select {
+        padding: 10px;
+        border-radius: 10px;
+        border: none;
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+</style>
+</head>
+<body>
+
+<h1>🎉 Happy Birthday Anime Edition 🎉</h1>
+
+<select id="characterSelect">
+    <option value="hutao">Hu Tao (HSR)</option>
+    <option value="cyrene">Cyrene (HSR)</option>
+    <option value="kaori">Kaori (Your Lie in April)</option>
+</select>
+
+<div class="card">
+    <img id="characterImg" src="sounds/hutao-icon.jpg" alt="Character Image">
+
+    <button class="voice" onclick="playVoice()">🔊 Play Voice Line</button>
+    <button class="music" onclick="playMusic()">🎵 Play Birthday Music</button>
+</div>
+
+<script>
+const characters = {
+    hutao: {
+        img: "sounds/hutao-icon.jpg",
+        voice: "sounds/hutao.mp3",
+        music: "sounds/hutao-music.mp3"
+    },
+    cyrene: {
+        img: "sounds/cyrene-icon.jpg",
+        voice: "sounds/cyrene.mp3",
+        music: "sounds/cyrene-music.mp3"
+    },
+    kaori: {
+        img: "sounds/kaori-icon.jpg",
+        voice: "sounds/kaori.mp3",
+        music: "sounds/kaori-music.mp3"
+    }
+};
+
+let current = "hutao";
+
+document.getElementById("characterSelect").addEventListener("change", function() {
+    current = this.value;
+    document.getElementById("characterImg").src = characters[current].img;
+});
+
+function playVoice() {
+    new Audio(characters[current].voice).play();
+}
+
+function playMusic() {
+    new Audio(characters[current].music).play();
+}
+</script>
+
+</body>
+</html>
